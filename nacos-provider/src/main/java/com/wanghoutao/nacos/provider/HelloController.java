@@ -18,7 +18,7 @@ public class HelloController {
     private String serviceName;
 
     @GetMapping("/hello")
-    public Map<String, Object> hello(@RequestParam(defaultValue = "nacos") String name) {
+    public Map<String, Object> hello(@RequestParam(name = "name", defaultValue = "nacos") String name) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("service", serviceName);
         body.put("port", port);

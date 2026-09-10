@@ -16,7 +16,7 @@ public class HelloController {
     }
 
     @GetMapping("/hello")
-    public Map<String, Object> hello(@RequestParam(defaultValue = "nacos") String name) {
+    public Map<String, Object> hello(@RequestParam(name = "name", defaultValue = "nacos") String name) {
         return providerClient.hello(name);
     }
 }
