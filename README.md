@@ -121,8 +121,8 @@ public class DemoProperties {
 验证：
 
 ```bash
-# 编译并启动配置示例
-mvn -pl nacos-config-demo -am spring-boot:run
+# 在对应模块目录启动，避免父工程没有 main class
+mvn -f nacos-config-demo/pom.xml spring-boot:run
 
 curl http://127.0.0.1:8081/config
 # {"message":"hello from nacos","version":"v1"}
@@ -167,8 +167,8 @@ public interface ProviderClient {
 启动顺序：Nacos → `nacos-provider` → `nacos-consumer`。
 
 ```bash
-mvn -pl nacos-provider -am spring-boot:run
-mvn -pl nacos-consumer -am spring-boot:run
+mvn -f nacos-provider/pom.xml spring-boot:run
+mvn -f nacos-consumer/pom.xml spring-boot:run
 
 curl http://127.0.0.1:8082/hello?name=nacos
 curl http://127.0.0.1:8083/hello?name=nacos
