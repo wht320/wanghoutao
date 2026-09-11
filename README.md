@@ -193,7 +193,8 @@ curl http://127.0.0.1:8083/hello?name=nacos
 │   └── verify.sh               # 三个服务的 HTTP 探测
 ├── nacos-config-demo/          # 配置中心，端口 8081
 ├── nacos-provider/             # 服务提供者，端口 8082
-└── nacos-consumer/             # 服务消费者，端口 8083
+├── nacos-consumer/             # 服务消费者，端口 8083
+└── java-multithread-demo/      # 多线程并行睡眠 1 分钟
 ```
 
 常用环境变量：
@@ -228,3 +229,25 @@ Provider 还没注册成功，或两边 `namespace` / `group` 不一致。先看
 - 核心配置不要用 `optional:nacos`，避免降级成默认值。
 - 服务下线配合优雅停机，减少调用方打到已关闭实例。
 - 配置变更要可回滚：控制台自带历史版本，发布前先确认 DataId。
+
+## 7. Java 多线程睡眠 1 分钟
+
+`java-multithread-demo` 会同时启动多个工作线程，每个线程调用 `Thread.sleep(60000)`，主线程 `join` 等待全部结束。三个线程是并行睡的，总时间大约还是 1 分钟，而不是 3 分钟。
+
+```bash
+# 默认：3 个线程，每个睡眠 60000 毫秒
+mvn -f java-multithread-demo/pom.xml -q exec:java
+
+# 自定义：5 个线程，每个仍睡眠 1 分钟
+mvn -f java-multithread-demo/pom.xml -q exec:java -Dexec.args="5 60000"
+```
+
+核心逻辑：
+
+```java
+Thread worker = new Thread(() -> {
+    Thread.sleep(60_000);
+}, "worker-" + id);
+worker.start();
+worker.join();
+```
