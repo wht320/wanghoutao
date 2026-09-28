@@ -272,5 +272,5 @@ docker compose logs -f
 mvn -f oracle-client-demo/pom.xml -q exec:java
 ```
 
-详细步骤见 [oracle/README.md](oracle/README.md)。
+详细步骤见 [oracle/README.md](oracle/README.md)。从内网 SPRCP（11.2，每表最多 500 行）经 U 盘导入本机的步骤见 [oracle/sprcp-transfer/README.md](oracle/sprcp-transfer/README.md)。
 

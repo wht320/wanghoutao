@@ -104,3 +104,8 @@ docker compose down -v       # 连数据一起删
 ```
 
 这是 Free 开发版，大约 2GB 内存，只适合本机学习。
+
+## 5. 从内网 SPRCP 拷开发数据（U 盘）
+
+内网 Oracle **11.2**、模式 **SPRCP** 全部表、每表最多 **500** 行，用 DBeaver 导出后 U 盘拷到 Mac 再导入。逐步点击说明和 SQL 在 [sprcp-transfer/README.md](sprcp-transfer/README.md)。
+
