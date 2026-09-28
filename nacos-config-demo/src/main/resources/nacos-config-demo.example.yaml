@@ -1,0 +1,7 @@
+# 把这份内容发布到 Nacos：
+#   Data ID = nacos-config-demo.yaml
+#   Group   = DEFAULT_GROUP
+#   配置格式 = YAML
+demo:
+  message: hello from nacos
+  version: v1

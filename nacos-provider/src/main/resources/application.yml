@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:}
+      password: ${NACOS_PASSWORD:}
+      discovery:
+        group: DEFAULT_GROUP
+        fail-fast: false

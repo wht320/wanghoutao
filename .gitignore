@@ -1,0 +1,17 @@
+target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+*.log
+*.jar
+!**/src/**/*.jar
+.DS_Store
+nacos/data/
+nacos/logs/
+nacos/work/
+*.pid
+.env
+oracle/sprcp-transfer/export/
