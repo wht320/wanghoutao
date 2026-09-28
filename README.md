@@ -188,6 +188,7 @@ curl http://127.0.0.1:8083/hello?name=nacos
 .
 ├── docker-compose.yml          # 单机 Nacos
 ├── oracle/                     # 本机 Oracle Database Free（Docker）
+├── oracle-client-demo/         # 本机 JDBC 连接 Oracle
 ├── pom.xml                     # 父工程，统一 BOM
 ├── scripts/
 │   ├── init-nacos-config.sh    # 向 Nacos 发布示例配置
