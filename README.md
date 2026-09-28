@@ -187,6 +187,7 @@ curl http://127.0.0.1:8083/hello?name=nacos
 ```text
 .
 ├── docker-compose.yml          # 单机 Nacos
+├── oracle/                     # 本机 Oracle Database Free（Docker）
 ├── pom.xml                     # 父工程，统一 BOM
 ├── scripts/
 │   ├── init-nacos-config.sh    # 向 Nacos 发布示例配置
@@ -251,3 +252,17 @@ Thread worker = new Thread(() -> {
 worker.start();
 worker.join();
 ```
+
+## 8. 本机 Oracle 数据库
+
+Mac 不能直接装官方数据库安装包。仓库里的 `oracle/docker-compose.yml` 用官方 Free 容器，Apple Silicon 可原生跑。
+
+```bash
+cd oracle
+cp .env.example .env
+docker compose up -d
+docker compose logs -f
+```
+
+就绪后连接 `localhost:1521/FREEPDB1`，用户 `system`，默认密码 `Oracle123`。详细步骤、JDBC 和常见问题见 [oracle/README.md](oracle/README.md)。
+
