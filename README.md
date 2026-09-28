@@ -256,7 +256,7 @@ worker.join();
 
 ## 8. 本机 Oracle 数据库
 
-Mac 不能直接装官方数据库安装包。仓库里的 `oracle/docker-compose.yml` 用官方 Free 容器，Apple Silicon 可原生跑。
+Mac 不能直接装官方数据库安装包。仓库里的 `oracle/docker-compose.yml` 用官方 Free 容器，Apple Silicon 可原生跑。**必须在你自己的 Mac 上启动 Docker**，然后用本机工具连 `localhost`。
 
 ```bash
 cd oracle
@@ -265,5 +265,12 @@ docker compose up -d
 docker compose logs -f
 ```
 
-就绪后连接 `localhost:1521/FREEPDB1`，用户 `system`，默认密码 `Oracle123`。详细步骤、JDBC 和常见问题见 [oracle/README.md](oracle/README.md)。
+就绪后用你自己电脑上的 DBeaver / SQL Developer / Java 连 `localhost:1521/FREEPDB1`，用户 `system`，默认密码 `Oracle123`。
+
+```bash
+# 数据库起来后，用本机 Java 测连通
+mvn -f oracle-client-demo/pom.xml -q exec:java
+```
+
+详细步骤见 [oracle/README.md](oracle/README.md)。
 
